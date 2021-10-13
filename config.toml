@@ -1,0 +1,94 @@
+baseurl = "https://iamval.me/"
+title = "Hello! I am Val!"
+theme = "pulp"
+canonifyurls = true
+hasCJKLanguage = true
+publishDir = "docs"
+# pygmentsCodefences = true
+# pygmentsUseClasses = true
+# googleAnalytics = "{your tracking code}"
+
+[markup.goldmark.renderer]
+    unsafe = true # Allow user HTML tags
+
+[params]
+    author = "Hello! I am Val!"
+    avatar = "avatar.png"
+    # avatarDescription = "My avatar description"
+    favicon = "favicon.ico"
+    description = """
+	Valdecir Carvalho <br>
+        Nerd, Community Lover, IT Guy, Father, Husband, Old School Gamer, Retired Wedding Photographer, Blogger, Speaker, Podcaster.
+	<br>
+	São Paulo, Brazil. GMT-3<br>
+	I hate coffee! Judge me.
+
+    """
+    publicationYear = "2021"
+    # listPageDateFormat = "January, 2006" # See https://gohugo.io/functions/format/
+    # singlePageDateFormat = "January 2, 2006"
+    # custom_css = ["/css/custom.css"]
+    # custom_js = ["/js/custom.js"]
+
+# Make sure setting a following option for search bar to work
+[outputs]
+    section = ["JSON", "HTML"]
+    term = ["JSON", "HTML"]
+
+#[[menu.main]]
+#    identifier = "about"
+#     name = "About" #If display text link, cancel comment out
+#     pre = "<i class='fa fa-book-open fa-lg'></i>" #Choose your favorite font from Font Awesome
+#     url = "/about/"
+#     weight = 10
+
+[[menu.main]]
+    identifier = "twitter"
+#    name = "Twitter"
+    pre = "<i class='fab fa-twitter fa-lg'></i>"
+    url = "https://twitter.com/homelaber"
+    weight = 10
+
+[[menu.main]]
+    identifier = "github"
+    # name = "GitHub"
+    pre = "<i class='fab fa-github fa-lg'></i>"
+    url = "https://github.com/valdecircarvalho"
+    weight = 20
+
+[[menu.main]]
+    identifier = "email"
+    # name = "Email"
+    pre = "<i class='fa fa-envelope fa-lg'></i>"
+    url = "mailto:valdecir.carvalho@outlook.com"
+    weight = 100
+
+[[menu.main]]
+    identifier = "linkedin"
+    # name = "Linkedin"
+    pre = "<i class='fab fa-linkedin-in'></i>"
+    url = "https://www.linkedin.com/in/valdecircarvalho/"
+    weight = 30
+
+[[menu.main]]
+    identifier = "blog"
+    # name = "blog"
+    pre = "<i class='fas fa-rss-square'></i>"
+    url = "https://homelaber.com.br"
+    weight = 40
+
+[[menu.main]]
+    identifier = "telegram"
+    # name = "telegram"
+    pre = "<i class='fab fa-telegram'></i>"
+    url = "https://t.me/vcarva"
+    weight = 35 
+
+[[menu.main]]
+    identifier = "whatsapp"
+    # name = "whatsapp"
+    pre = "<i class='fab fa-whatsapp'></i>"
+    url = "https://wa.me/+5511952593615"
+    weight = 36
+
+
