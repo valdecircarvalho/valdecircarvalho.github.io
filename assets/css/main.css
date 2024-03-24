@@ -73,7 +73,11 @@ VC Paleta de Cores
   padding: 5px; /* Adiciona um pouco de espaço ao redor do emoji para torná-lo mais fácil de clicar */
 }
 
+/* Estilos para hover (quando o mouse está sobre o link) */
+.language-selector a:hover {
 
+  border-radius: 5px; /* Adiciona bordas arredondadas */
+}
 /*-----------------------------------------------------------------
   1. >>> Headr Style
 ----------------------------------------------------------------*/
