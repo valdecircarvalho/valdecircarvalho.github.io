@@ -1,5 +1,3 @@
-<!doctype html>
-<html lang="en-us">
 
 <head>
   <!-- Required meta tags -->
@@ -43,27 +41,6 @@
   <title>Hello! I am Val :) | Valdecir Carvalho</title>
 
 </head>
-
-<body>
-
-  <!-- header -->
-  <header class="ds-header">
-    <div class="container">
-      <div class="ds-logo">
-        <a href="index.html">Hello! I'm Val :)</a>
-      </div>
-      <div class="language-selector">
-        <a href="index.html" title="English">🇺🇸</a>
-        <a href="index-ptbr.html" title="Português">🇧🇷</a>
-      </div>
-    </div>
-  </header>
-  <!-- header -->
-  <!-- banner -->
-  <section class="ds-banner">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-sm-12  col-md-6  col-lg-7  col-xl-7  col-xxl-7 ds-banner-left">
           <h1 class="ds-banner-hed">
             Hello! I'm Val,
           </h1>
@@ -75,33 +52,6 @@
           </h2>
           <h4> from São Paulo, Brazil</h4>
 
-          <ul class="ds-social">
-            <li><a href="mailto:valdecir.carvalho@outlook.com?subject=Hello Val!" target="_blank"
-                title="Drop me a mail"><i class="ri-mail-line"></i></a></li>
-            <li><a href="https://linkedin.com/in/valdecircarvalho" target="_blank" title="Connect on LinkedIn"><i
-                  class="ri-linkedin-fill"></i></a></li>
-            <li><a href="https://github.com/valdecircarvalho" target="_blank" title="Check my projects on Github"><i
-                  class="ri-github-fill"></i></a></li>
-            <li><a href="https://wa.me/+5511952593615" target="_blank"><i class="ri-whatsapp-line"
-                  title="Ping me o WhatsApp"></i></a></li>
-            <li><a href="https://cal.com/valdecircarvalho/meetval" target="_blank" title="Schedule a Meeting"><i
-                  class="ri-calendar-2-fill"></i></a></li>
-          </ul>
-        </div>
-        <div class="col-12 col-sm-12  col-md-6  col-lg-5  col-xl-5  col-xxl-5">
-          <figure>
-            <img src="assets/images/Valdecir-ProfilePic.jpg" class="ds-image-shadow" alt="Valdecir Carvalho - Profile Picture">
-            <figcaption></figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- banner -->
-  <!-- resume -->
-  <section class="ds-resume-section">
-    <div class="container">
-      <div class="row">
         <div class="col-12 col-sm-12  col-md-6  col-lg-6  col-xl-6  col-xxl-6">
           <h2>I am passionate about technology and the way it impact people lives while making it better. </h2>
         </div>
@@ -123,12 +73,6 @@
             collaboration and get people togheter. It's about more than just business—it's about creating experiences
             that resonate among people.</p>
 
-          <a href="/assets/files/resume-valdecircarvalho-it-2024.pdf" class="ds-download-button">Download Resume <i class="ri-download-line"></i></a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="ds-email-section">
     <div class="container">
       <h2>Areas of Expertise</h2>
       <h4>
@@ -138,11 +82,16 @@
         Networking
       </h4>
     </div>
-  </section>
 
+        <div class="container">
+      <h2>I'm passionate about</h2>
+      <small>(in no particular order)</small>
 
-  <section class="ds-email-section-2">
-    <div class="container">
+      <h4>
+        Tech Communities · 3D Printing · Laser Cutting · Blogging · Public Speaking · 80's Movies · Entrepreneurship ·
+        Videogames · Homelabs/Self Hosting · Bibliographies ·
+      </h4>
+    </div>    <div class="container">
       <h2>I'm passionate about</h2>
       <small>(in no particular order)</small>
 
@@ -151,50 +100,3 @@
         Videogames · Homelabs/Self Hosting · Bibliographies ·
       </h4>
     </div>
-  </section>
-
-  <section class="ds-email-section">
-    <div class="container">
-      <h2>Get in touch!</h2>
-
-      <ul class="ds-social-2">
-        <li><a href="mailto:valdecir.carvalho@outlook.com?subject=Hello Val!" target="_blank" title="Drop me a mail"><i
-              class="ri-mail-line"></i></a></li>
-        <li><a href="https://linkedin.com/in/valdecircarvalho" target="_blank" title="Connect on LinkedIn"><i
-              class="ri-linkedin-fill"></i></a></li>
-        <li><a href="https://github.com/valdecircarvalho" target="_blank" title="Check my projects on Github"><i
-              class="ri-github-fill"></i></a></li>
-        <li><a href="https://wa.me/+5511952593615" target="_blank"><i class="ri-whatsapp-line"
-              title="Ping me o WhatsApp"></i></a></li>
-        <li><a href="https://cal.com/valdecircarvalho/meetval" target="_blank" title="Schedule a Meeting"><i
-              class="ri-calendar-2-fill"></i></a></li>
-      </ul>
-
-    </div>
-  </section>
-
-
-  <!-- footer -->
-  <footer class="ds-footer">
-    <div class="container">
-      <span class="ds-copyright"><a href="https://valdecir.me" target="_blank">&copy; 2020-2024 - Hello! I'm Val</span>
-    </div>
-  </footer>
-  <!-- footer -->
-  <!-- Optional JavaScript; choose one of the two! -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-  <!-- Option 2: Separate Popper and Bootstrap JS -->
-  <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-  <script src="assets/js/main.js"></script>
-</body>
-
-</html>

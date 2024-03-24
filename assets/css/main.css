@@ -56,6 +56,23 @@ VC Paleta de Cores
 .color-5 {color: #8B4513;}
 .color-6 {color: #008080;}
 
+.language-selector {
+  display: flex; /* Organiza os itens do seletor de idioma lado a lado */
+  gap: 10px; /* Adiciona um espaço entre os links dos idiomas */
+  
+}
+
+.language-selector a {
+  font-family: Arial, sans-serif; /* Usa uma fonte que suporte emojis */
+  font-size: 24px; /* Ajusta o tamanho do emoji */
+  color: inherit; /* Mantém a cor do texto herdada do elemento pai */
+  text-decoration: none; /* Remove o sublinhado dos links */
+  background-color: transparent; /* Fundo transparente para os links */
+  border: none; /* Remove a borda dos links, se houver */
+  cursor: pointer; /* Muda o cursor para indicar que o item é clicável */
+  padding: 5px; /* Adiciona um pouco de espaço ao redor do emoji para torná-lo mais fácil de clicar */
+}
+
 
 /*-----------------------------------------------------------------
   1. >>> Headr Style
