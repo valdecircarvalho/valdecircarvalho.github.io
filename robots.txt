@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Allow all content to be crawled
+Allow: /assets/
+Allow: /index.html
+Allow: /index-ptbr.html
+Allow: /404.html
+Allow: /404-ptbr.html
+
+# Block sensitive content
+Disallow: /*.pdf$
+
+# Specify sitemap location
+Sitemap: https://valdecir.me/sitemap.xml
+
+# Crawl-delay for bots
+Crawl-delay: 1 

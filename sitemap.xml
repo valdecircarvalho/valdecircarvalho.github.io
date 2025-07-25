@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- English version (default) -->
+  <url>
+    <loc>https://valdecir.me/</loc>
+    <lastmod>2024-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link 
+      rel="alternate"
+      hreflang="pt"
+      href="https://valdecir.me/index-ptbr.html" />
+    <xhtml:link 
+      rel="alternate"
+      hreflang="en"
+      href="https://valdecir.me/index.html" />
+    <xhtml:link 
+      rel="alternate"
+      hreflang="x-default"
+      href="https://valdecir.me/index.html" />
+  </url>
+  
+  <!-- English explicit -->
+  <url>
+    <loc>https://valdecir.me/index.html</loc>
+    <lastmod>2024-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link 
+      rel="alternate"
+      hreflang="pt"
+      href="https://valdecir.me/index-ptbr.html" />
+    <xhtml:link 
+      rel="alternate"
+      hreflang="en"
+      href="https://valdecir.me/index.html" />
+    <xhtml:link 
+      rel="alternate"
+      hreflang="x-default"
+      href="https://valdecir.me/index.html" />
+  </url>
+  
+  <!-- Portuguese version -->
+  <url>
+    <loc>https://valdecir.me/index-ptbr.html</loc>
+    <lastmod>2024-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link 
+      rel="alternate"
+      hreflang="pt"
+      href="https://valdecir.me/index-ptbr.html" />
+    <xhtml:link 
+      rel="alternate"
+      hreflang="en"
+      href="https://valdecir.me/index.html" />
+    <xhtml:link 
+      rel="alternate"
+      hreflang="x-default"
+      href="https://valdecir.me/index.html" />
+  </url>
+  
+  <!-- 404 English -->
+  <url>
+    <loc>https://valdecir.me/404.html</loc>
+    <lastmod>2024-12-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+    <xhtml:link 
+      rel="alternate"
+      hreflang="pt"
+      href="https://valdecir.me/404-ptbr.html" />
+    <xhtml:link 
+      rel="alternate"
+      hreflang="en"
+      href="https://valdecir.me/404.html" />
+    <xhtml:link 
+      rel="alternate"
+      hreflang="x-default"
+      href="https://valdecir.me/404.html" />
+  </url>
+  
+  <!-- 404 Portuguese -->
+  <url>
+    <loc>https://valdecir.me/404-ptbr.html</loc>
+    <lastmod>2024-12-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+    <xhtml:link 
+      rel="alternate"
+      hreflang="pt"
+      href="https://valdecir.me/404-ptbr.html" />
+    <xhtml:link 
+      rel="alternate"
+      hreflang="en"
+      href="https://valdecir.me/404.html" />
+    <xhtml:link 
+      rel="alternate"
+      hreflang="x-default"
+      href="https://valdecir.me/404.html" />
+  </url>
+  
+</urlset> 
