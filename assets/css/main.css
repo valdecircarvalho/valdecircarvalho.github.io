@@ -155,8 +155,8 @@ VC Paleta de Cores
 
 .ds-social-2{ list-style: none; display: flex; align-items: center;margin-top: 2.5rem;justify-content: center;text-decoration: none;}
 .ds-social-2 li{ margin-right: 15px }
-.ds-social-2 a{ width: 30px; height: 30px;;text-decoration: none; background-color: #2A2A2A; border-radius:50%; text-align: center; display: flex; justify-content: center; align-items: center; font-size:1.25rem; color:#FFFFFF }
-.ds-social-2 li:hover a{background-color: #FFFFFF; color:#FFFFF }
+.ds-social-2 a{ width: 30px; height: 30px; text-decoration: none; background-color: #2A2A2A; border-radius:50%; text-align: center; display: flex; justify-content: center; align-items: center; font-size:1.25rem; color:#FFFFFF }
+.ds-social-2 li:hover a{background-color: #FFFFFF; color:#FFFFFF }
 .ds-social-2 li:last-child{ margin-right: 0 }
 
 
@@ -270,5 +270,42 @@ VC Paleta de Cores
 @media (min-width: 992px) and (max-width: 1199px) {
 .ds-banner figure{ margin-right: 1.875rem }
 
+}
+
+/*-----------------------------------------------------------------
+  >>> Content Selection & Copy Permissions
+----------------------------------------------------------------*/
+/* Ensure all text content is selectable and copyable */
+body, p, h1, h2, h3, h4, h5, h6, span, div, article, section {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
+
+/* Allow text selection for specific content areas */
+.ds-banner, .ds-resume-section, .ds-email-section, .ds-email-section-2 {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
+
+/* Ensure links and interactive elements remain selectable */
+a, button {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
+
+/* Allow copy operations */
+body {
+  -webkit-touch-callout: default !important;
+  -webkit-user-select: text !important;
+  -khtml-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
 }
 
