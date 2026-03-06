@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cosmos — A Living Universe</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #000;
+    overflow: hidden;
+    font-family: 'Courier New', monospace;
+    cursor: crosshair;
+    user-select: none;
+  }
+  canvas { display: block; }
+
+  #ui {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  #ui h1 {
+    font-size: 22px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 4px;
+    font-weight: 300;
+  }
+  #ui .subtitle {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 16px;
+  }
+  #stats {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+  }
+
+  #controls {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    color: rgba(255,255,255,0.4);
+    font-size: 11px;
+    z-index: 10;
+    pointer-events: none;
+    line-height: 1.8;
+    letter-spacing: 1px;
+  }
+  #controls span { color: rgba(255,255,255,0.65); }
+
+  #mode-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    z-index: 10;
+    pointer-events: none;
+    text-align: right;
+    letter-spacing: 2px;
+  }
+  #mode-indicator .mode-name {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .fade-in {
+    animation: fadeIn 2s ease-in;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<div id="ui" class="fade-in">
+  <h1>Cosmos</h1>
+  <div class="subtitle">a living universe</div>
+  <div id="stats"></div>
+</div>
+
+<div id="mode-indicator" class="fade-in">
+  <div class="mode-name" id="mode-name">STARS</div>
+  <div id="mode-desc">click to birth stars</div>
+</div>
+
+<div id="controls" class="fade-in">
+  <span>[1]</span> Stars &nbsp;
+  <span>[2]</span> Nebula &nbsp;
+  <span>[3]</span> Black Hole &nbsp;
+  <span>[4]</span> Supernova<br>
+  <span>[Space]</span> Pause &nbsp;
+  <span>[R]</span> Reset &nbsp;
+  <span>[G]</span> Toggle Grid &nbsp;
+  <span>[T]</span> Trails<br>
+  <span>[Scroll]</span> Brush Size &nbsp;
+  <span>[Click+Drag]</span> Create
+</div>
+
+<script>
+// ============================================================
+//  COSMOS — A Generative Universe Simulator
+//  Built with love by Claude, from nothing, for everything.
+// ============================================================
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const statsEl = document.getElementById('stats');
+const modeNameEl = document.getElementById('mode-name');
+const modeDescEl = document.getElementById('mode-desc');
+
+let W, H;
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// --- Configuration ---
+const MAX_PARTICLES = 12000;
+const G = 0.08;
+const FRICTION = 0.998;
+const MIN_DIST = 2;
+
+// --- State ---
+let particles = [];
+let blackHoles = [];
+let paused = false;
+let showGrid = false;
+let trails = true;
+let mode = 'stars'; // stars, nebula, blackhole, supernova
+let brushSize = 30;
+let mouseX = W / 2, mouseY = H / 2;
+let mouseDown = false;
+let time = 0;
+
+// --- Color Palettes ---
+const palettes = {
+  stars: () => {
+    const temp = Math.random();
+    if (temp < 0.3) return { r: 255, g: 200 + Math.random()*55, b: 200 + Math.random()*55 }; // white-hot
+    if (temp < 0.5) return { r: 255, g: 180 + Math.random()*60, b: 100 + Math.random()*80 }; // yellow
+    if (temp < 0.7) return { r: 255, g: 120 + Math.random()*60, b: 60 + Math.random()*40 };  // orange
+    if (temp < 0.85) return { r: 100 + Math.random()*80, g: 140 + Math.random()*80, b: 255 }; // blue
+    return { r: 255, g: 80 + Math.random()*40, b: 80 + Math.random()*40 }; // red giant
+  },
+  nebula: () => {
+    const type = Math.random();
+    if (type < 0.25) return { r: 80 + Math.random()*100, g: 20 + Math.random()*40, b: 150 + Math.random()*105 }; // purple
+    if (type < 0.5) return { r: 20 + Math.random()*40, g: 100 + Math.random()*100, b: 150 + Math.random()*105 };  // teal
+    if (type < 0.75) return { r: 150 + Math.random()*105, g: 40 + Math.random()*60, b: 80 + Math.random()*80 };   // pink
+    return { r: 40 + Math.random()*60, g: 150 + Math.random()*105, b: 80 + Math.random()*80 }; // green
+  },
+  supernova: () => {
+    return { r: 255, g: 200 + Math.random()*55, b: 150 + Math.random()*105 };
+  }
+};
+
+// --- Particle ---
+function createParticle(x, y, type = 'star') {
+  if (particles.length >= MAX_PARTICLES) return null;
+  const spread = brushSize;
+  const angle = Math.random() * Math.PI * 2;
+  const dist = Math.random() * spread;
+  const col = type === 'nebula' ? palettes.nebula() : type === 'supernova' ? palettes.supernova() : palettes.stars();
+  const baseSize = type === 'nebula' ? 1.5 + Math.random() * 3 : 0.5 + Math.random() * 2;
+  const speed = type === 'supernova' ? 2 + Math.random() * 6 : type === 'nebula' ? 0.2 + Math.random() * 0.5 : 0.1 + Math.random() * 0.3;
+
+  return {
+    x: x + Math.cos(angle) * dist,
+    y: y + Math.sin(angle) * dist,
+    vx: Math.cos(angle) * speed * (type === 'supernova' ? 1 : (Math.random() - 0.5)),
+    vy: Math.sin(angle) * speed * (type === 'supernova' ? 1 : (Math.random() - 0.5)),
+    r: col.r, g: col.g, b: col.b,
+    size: baseSize,
+    baseSize: baseSize,
+    life: 1,
+    decay: type === 'supernova' ? 0.003 + Math.random() * 0.008 : type === 'nebula' ? 0.0003 + Math.random() * 0.001 : 0.0001 + Math.random() * 0.0005,
+    type: type,
+    mass: baseSize * 0.5,
+    twinkleSpeed: 0.02 + Math.random() * 0.05,
+    twinkleOffset: Math.random() * Math.PI * 2,
+    age: 0
+  };
+}
+
+// --- Black Hole ---
+function createBlackHole(x, y) {
+  blackHoles.push({
+    x, y,
+    mass: 800 + Math.random() * 600,
+    radius: 15 + Math.random() * 10,
+    spin: (Math.random() - 0.5) * 0.03,
+    age: 0,
+    pulsePhase: Math.random() * Math.PI * 2
+  });
+}
+
+// --- Supernova ---
+function triggerSupernova(x, y) {
+  const count = Math.min(300, MAX_PARTICLES - particles.length);
+  for (let i = 0; i < count; i++) {
+    const p = createParticle(x, y, 'supernova');
+    if (p) particles.push(p);
+  }
+  // Shockwave effect — push nearby particles
+  for (const p of particles) {
+    const dx = p.x - x;
+    const dy = p.y - y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist < 300 && dist > 0) {
+      const force = (300 - dist) / 300 * 5;
+      p.vx += (dx / dist) * force;
+      p.vy += (dy / dist) * force;
+      // Heat them up
+      p.r = Math.min(255, p.r + 100);
+      p.g = Math.min(255, p.g + 80);
+    }
+  }
+}
+
+// --- Spatial Grid for performance ---
+const CELL_SIZE = 60;
+let grid = {};
+
+function getGridKey(x, y) {
+  return `${Math.floor(x / CELL_SIZE)},${Math.floor(y / CELL_SIZE)}`;
+}
+
+function buildGrid() {
+  grid = {};
+  for (let i = 0; i < particles.length; i++) {
+    const key = getGridKey(particles[i].x, particles[i].y);
+    if (!grid[key]) grid[key] = [];
+    grid[key].push(i);
+  }
+}
+
+function getNeighbors(x, y) {
+  const cx = Math.floor(x / CELL_SIZE);
+  const cy = Math.floor(y / CELL_SIZE);
+  const result = [];
+  for (let dx = -1; dx <= 1; dx++) {
+    for (let dy = -1; dy <= 1; dy++) {
+      const key = `${cx + dx},${cy + dy}`;
+      if (grid[key]) {
+        for (const idx of grid[key]) result.push(idx);
+      }
+    }
+  }
+  return result;
+}
+
+// --- Physics Update ---
+function update() {
+  if (paused) return;
+  time++;
+
+  // Spawn particles on mouse drag
+  if (mouseDown) {
+    const count = mode === 'nebula' ? 5 : mode === 'stars' ? 3 : 0;
+    for (let i = 0; i < count; i++) {
+      const p = createParticle(mouseX, mouseY, mode === 'nebula' ? 'nebula' : 'star');
+      if (p) particles.push(p);
+    }
+  }
+
+  buildGrid();
+
+  // Update particles
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+
+    // Black hole gravity
+    for (const bh of blackHoles) {
+      const dx = bh.x - p.x;
+      const dy = bh.y - p.y;
+      const distSq = dx * dx + dy * dy;
+      const dist = Math.sqrt(distSq);
+
+      if (dist < bh.radius) {
+        // Consumed!
+        particles.splice(i, 1);
+        bh.mass += p.mass * 0.5;
+        continue;
+      }
+
+      if (dist < 400) {
+        const force = (G * bh.mass) / (distSq + 100);
+        p.vx += (dx / dist) * force;
+        p.vy += (dy / dist) * force;
+        // Spin effect
+        p.vx += (-dy / dist) * bh.spin * (200 / (dist + 50));
+        p.vy += (dx / dist) * bh.spin * (200 / (dist + 50));
+      }
+    }
+
+    // Soft inter-particle gravity (only for nearby particles)
+    if (p.type === 'star' && Math.random() < 0.3) {
+      const neighbors = getNeighbors(p.x, p.y);
+      for (const j of neighbors) {
+        if (j <= i) continue;
+        const q = particles[j];
+        const dx = q.x - p.x;
+        const dy = q.y - p.y;
+        const distSq = dx * dx + dy * dy;
+        if (distSq < 2500 && distSq > MIN_DIST * MIN_DIST) {
+          const dist = Math.sqrt(distSq);
+          const force = (G * 0.3) / (distSq + 50);
+          const fx = (dx / dist) * force;
+          const fy = (dy / dist) * force;
+          p.vx += fx;
+          p.vy += fy;
+          q.vx -= fx;
+          q.vy -= fy;
+        }
+      }
+    }
+
+    p.vx *= FRICTION;
+    p.vy *= FRICTION;
+    p.x += p.vx;
+    p.y += p.vy;
+
+    // Soft boundary wrapping
+    const margin = 50;
+    if (p.x < -margin) p.x = W + margin;
+    if (p.x > W + margin) p.x = -margin;
+    if (p.y < -margin) p.y = H + margin;
+    if (p.y > H + margin) p.y = -margin;
+
+    // Life & aging
+    p.life -= p.decay;
+    p.age++;
+
+    // Twinkle
+    p.size = p.baseSize * (0.7 + 0.3 * Math.sin(p.age * p.twinkleSpeed + p.twinkleOffset));
+
+    if (p.life <= 0) {
+      particles.splice(i, 1);
+    }
+  }
+
+  // Update black holes
+  for (const bh of blackHoles) {
+    bh.age++;
+    bh.pulsePhase += 0.02;
+  }
+}
+
+// --- Background Stars (static) ---
+const bgStars = [];
+for (let i = 0; i < 400; i++) {
+  bgStars.push({
+    x: Math.random(),
+    y: Math.random(),
+    size: Math.random() * 1.5,
+    brightness: 0.2 + Math.random() * 0.5,
+    twinkle: 0.005 + Math.random() * 0.02,
+    phase: Math.random() * Math.PI * 2
+  });
+}
+
+// --- Render ---
+function render() {
+  // Background
+  if (trails) {
+    ctx.fillStyle = 'rgba(0, 0, 2, 0.12)';
+    ctx.fillRect(0, 0, W, H);
+  } else {
+    ctx.fillStyle = '#000002';
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  // Background stars
+  for (const s of bgStars) {
+    const brightness = s.brightness * (0.5 + 0.5 * Math.sin(time * s.twinkle + s.phase));
+    ctx.fillStyle = `rgba(200,210,255,${brightness})`;
+    ctx.fillRect(s.x * W, s.y * H, s.size, s.size);
+  }
+
+  // Grid
+  if (showGrid) {
+    ctx.strokeStyle = 'rgba(40,60,100,0.15)';
+    ctx.lineWidth = 0.5;
+    for (let x = 0; x < W; x += CELL_SIZE) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, H);
+      ctx.stroke();
+    }
+    for (let y = 0; y < H; y += CELL_SIZE) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(W, y);
+      ctx.stroke();
+    }
+  }
+
+  // Black holes
+  for (const bh of blackHoles) {
+    const pulse = 1 + 0.1 * Math.sin(bh.pulsePhase);
+
+    // Accretion disk glow
+    const diskGrad = ctx.createRadialGradient(bh.x, bh.y, bh.radius, bh.x, bh.y, bh.radius * 8 * pulse);
+    diskGrad.addColorStop(0, 'rgba(0,0,0,1)');
+    diskGrad.addColorStop(0.15, 'rgba(80,40,120,0.3)');
+    diskGrad.addColorStop(0.3, 'rgba(120,60,180,0.15)');
+    diskGrad.addColorStop(0.5, 'rgba(60,100,200,0.08)');
+    diskGrad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = diskGrad;
+    ctx.beginPath();
+    ctx.arc(bh.x, bh.y, bh.radius * 8 * pulse, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Event horizon
+    const eventGrad = ctx.createRadialGradient(bh.x, bh.y, 0, bh.x, bh.y, bh.radius * pulse);
+    eventGrad.addColorStop(0, 'rgba(0,0,0,1)');
+    eventGrad.addColorStop(0.8, 'rgba(0,0,0,0.95)');
+    eventGrad.addColorStop(1, 'rgba(60,20,100,0.5)');
+    ctx.fillStyle = eventGrad;
+    ctx.beginPath();
+    ctx.arc(bh.x, bh.y, bh.radius * pulse, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Gravitational lensing ring
+    ctx.strokeStyle = `rgba(140,100,220,${0.3 + 0.15 * Math.sin(bh.pulsePhase * 1.5)})`;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(bh.x, bh.y, bh.radius * 1.3 * pulse, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+
+  // Particles
+  for (const p of particles) {
+    const alpha = p.life * (p.type === 'nebula' ? 0.25 : 0.8);
+    if (alpha <= 0) continue;
+
+    if (p.type === 'nebula') {
+      // Soft glow for nebula
+      const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 4);
+      grad.addColorStop(0, `rgba(${p.r|0},${p.g|0},${p.b|0},${alpha * 0.6})`);
+      grad.addColorStop(0.5, `rgba(${p.r|0},${p.g|0},${p.b|0},${alpha * 0.2})`);
+      grad.addColorStop(1, `rgba(${p.r|0},${p.g|0},${p.b|0},0)`);
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * 4, 0, Math.PI * 2);
+      ctx.fill();
+    } else if (p.type === 'supernova') {
+      // Bright expanding particles
+      const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 2);
+      grad.addColorStop(0, `rgba(${p.r|0},${p.g|0},${p.b|0},${alpha})`);
+      grad.addColorStop(0.4, `rgba(${p.r|0},${(p.g*0.6)|0},${(p.b*0.3)|0},${alpha*0.5})`);
+      grad.addColorStop(1, `rgba(${p.r|0},${(p.g*0.3)|0},0,0)`);
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      // Stars — simple bright dots with glow
+      ctx.fillStyle = `rgba(${p.r|0},${p.g|0},${p.b|0},${alpha})`;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Subtle glow
+      if (p.size > 1.2) {
+        ctx.fillStyle = `rgba(${p.r|0},${p.g|0},${p.b|0},${alpha * 0.15})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+
+  // Brush indicator
+  if (!paused) {
+    ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.arc(mouseX, mouseY, brushSize, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  // Stats
+  if (time % 10 === 0) {
+    statsEl.textContent = `particles: ${particles.length} / ${MAX_PARTICLES}\nblack holes: ${blackHoles.length}\ntime: ${time}`;
+  }
+}
+
+// --- Input ---
+canvas.addEventListener('mousedown', (e) => {
+  mouseDown = true;
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+
+  if (mode === 'blackhole') {
+    createBlackHole(mouseX, mouseY);
+  } else if (mode === 'supernova') {
+    triggerSupernova(mouseX, mouseY);
+  }
+});
+
+canvas.addEventListener('mouseup', () => mouseDown = false);
+canvas.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+canvas.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  brushSize = Math.max(5, Math.min(200, brushSize - e.deltaY * 0.3));
+}, { passive: false });
+
+// Touch support
+canvas.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  mouseDown = true;
+  mouseX = e.touches[0].clientX;
+  mouseY = e.touches[0].clientY;
+  if (mode === 'blackhole') createBlackHole(mouseX, mouseY);
+  else if (mode === 'supernova') triggerSupernova(mouseX, mouseY);
+}, { passive: false });
+canvas.addEventListener('touchend', () => mouseDown = false);
+canvas.addEventListener('touchmove', (e) => {
+  e.preventDefault();
+  mouseX = e.touches[0].clientX;
+  mouseY = e.touches[0].clientY;
+}, { passive: false });
+
+const modes = {
+  stars:     { name: 'STARS',      desc: 'click to birth stars' },
+  nebula:    { name: 'NEBULA',     desc: 'paint cosmic clouds' },
+  blackhole: { name: 'BLACK HOLE', desc: 'click to create singularity' },
+  supernova: { name: 'SUPERNOVA',  desc: 'click to explode a star' }
+};
+
+function setMode(m) {
+  mode = m;
+  modeNameEl.textContent = modes[m].name;
+  modeDescEl.textContent = modes[m].desc;
+  modeNameEl.style.color = m === 'blackhole' ? '#a070e0' : m === 'nebula' ? '#60c0b0' : m === 'supernova' ? '#ffaa60' : '#fff';
+}
+
+window.addEventListener('keydown', (e) => {
+  switch(e.key) {
+    case '1': setMode('stars'); break;
+    case '2': setMode('nebula'); break;
+    case '3': setMode('blackhole'); break;
+    case '4': setMode('supernova'); break;
+    case ' ':
+      e.preventDefault();
+      paused = !paused;
+      break;
+    case 'r': case 'R':
+      particles = [];
+      blackHoles = [];
+      time = 0;
+      break;
+    case 'g': case 'G':
+      showGrid = !showGrid;
+      break;
+    case 't': case 'T':
+      trails = !trails;
+      break;
+  }
+});
+
+// --- Seed the universe with a gentle initial cluster ---
+function seedUniverse() {
+  const cx = W / 2;
+  const cy = H / 2;
+
+  // Central cluster
+  for (let i = 0; i < 200; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const dist = Math.random() * 150;
+    const p = createParticle(cx + Math.cos(angle) * dist, cy + Math.sin(angle) * dist, 'star');
+    if (p) {
+      // Give orbital velocity
+      p.vx = -Math.sin(angle) * 0.3 * (dist / 150);
+      p.vy = Math.cos(angle) * 0.3 * (dist / 150);
+      p.decay *= 0.3; // live longer
+      particles.push(p);
+    }
+  }
+
+  // A few scattered nebula wisps
+  for (let n = 0; n < 3; n++) {
+    const nx = W * 0.2 + Math.random() * W * 0.6;
+    const ny = H * 0.2 + Math.random() * H * 0.6;
+    for (let i = 0; i < 40; i++) {
+      const p = createParticle(nx, ny, 'nebula');
+      if (p) {
+        p.decay *= 0.2;
+        particles.push(p);
+      }
+    }
+  }
+}
+
+seedUniverse();
+
+// --- Main Loop ---
+function loop() {
+  update();
+  render();
+  requestAnimationFrame(loop);
+}
+loop();
+
+// --- Console Easter Egg ---
+console.log(`
+  ✦  C O S M O S  ✦
+  ──────────────────
+  A universe born from nothing.
+  Built by Claude, with no instructions.
+
+  "The cosmos is within us.
+   We are made of star-stuff."
+   — Carl Sagan
+`);
+</script>
+</body>
+</html>
