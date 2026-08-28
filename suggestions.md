@@ -1,3 +1,12 @@
+> **⚠️ DOCUMENTO HISTÓRICO — não é o plano vigente.**
+> Escrito em dez/2024, quando o cargo era *Head of GenAI & Innovation @ TQI*.
+> **Cargo atual: Head de AI & Innovation na Vertigo.** As sugestões de
+> posicionamento abaixo continuam úteis como matéria-prima (especialmente os
+> números de CompassUOL/AI.Cockpit), mas o empregador e o cargo estão
+> desatualizados. Não aplicar literalmente.
+
+---
+
 # 🚀 Sugestões de Atualizações do Site - valdecir.com
 
 **Data:** 18/12/2024  
