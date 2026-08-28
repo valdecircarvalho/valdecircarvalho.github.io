@@ -4,7 +4,7 @@
 **Phone:** +55 11 95259-3615  
 **Email:** [valdecir.carvalho@outlook.com](mailto:valdecir.carvalho@outlook.com)  
 **LinkedIn:** [in/valdecircarvalho](https://www.linkedin.com/in/valdecircarvalho)  
-**Website:** [valdecir.me](http://valdecir.me)
+**Website:** [valdecir.com](https://valdecir.com)
 
 ## Professional Summary
 Dynamic IT professional with **over 25 years of experience** specializing in **Pre-Sales, Cloud Solutions Architecture, Data Center Management, and High Availability Systems.** Proven success in **leading complex, high-budget projects** to completion, with a **deep technical expertise** and strategic leadership. Experienced in **project management, technical sales, and ensuring customer success.**  I have a strong track record of **delivering customized technical solutions and managing customer relationships effectively.** Proficient in **cross-functional team leadership, stakeholder engagement, and product demonstrations.** Committed to achieving project objectives and **enhancing customer satisfaction.** My approach prioritizes **customer success**, going **above and beyond** to ensure **customer satisfaction** and **project success** through effective **technical advising.**
@@ -87,6 +87,6 @@ E.T.E. Prof. Horácio Augusto da Silveira, São Paulo, Brazil, 1996
 - Tech content creation
 
 ---
-Get in touch: +55 11 95259-3615 · valdecir.carvalho@outlook.com · [valdecir.me](https://valdecir.me)
+Get in touch: +55 11 95259-3615 · valdecir.carvalho@outlook.com · [valdecir.com](https://valdecir.com)
 
 _last update: 03-2024_ 

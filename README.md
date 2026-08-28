@@ -12,4 +12,4 @@
 ## Let´s connect!
 ---
 
- &copy; 1978-2025 - Hello! I´m Val! | [valdecir.me](https://valdecir.me) | [iamval.me](https://iamval.mee)
+ &copy; 1978-2025 - Hello! I´m Val! | [valdecir.com](https://valdecir.com) | [iamval.me](https://iamval.mee)

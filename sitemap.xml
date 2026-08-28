@@ -4,102 +4,102 @@
   
   <!-- English version (default) -->
   <url>
-    <loc>https://valdecir.me/</loc>
-    <lastmod>2024-12-18</lastmod>
+    <loc>https://valdecir.com/</loc>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link 
       rel="alternate"
       hreflang="pt"
-      href="https://valdecir.me/index-ptbr.html" />
+      href="https://valdecir.com/index-ptbr.html" />
     <xhtml:link 
       rel="alternate"
       hreflang="en"
-      href="https://valdecir.me/index.html" />
+      href="https://valdecir.com/index.html" />
     <xhtml:link 
       rel="alternate"
       hreflang="x-default"
-      href="https://valdecir.me/index.html" />
+      href="https://valdecir.com/index.html" />
   </url>
   
   <!-- English explicit -->
   <url>
-    <loc>https://valdecir.me/index.html</loc>
-    <lastmod>2024-12-18</lastmod>
+    <loc>https://valdecir.com/index.html</loc>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link 
       rel="alternate"
       hreflang="pt"
-      href="https://valdecir.me/index-ptbr.html" />
+      href="https://valdecir.com/index-ptbr.html" />
     <xhtml:link 
       rel="alternate"
       hreflang="en"
-      href="https://valdecir.me/index.html" />
+      href="https://valdecir.com/index.html" />
     <xhtml:link 
       rel="alternate"
       hreflang="x-default"
-      href="https://valdecir.me/index.html" />
+      href="https://valdecir.com/index.html" />
   </url>
   
   <!-- Portuguese version -->
   <url>
-    <loc>https://valdecir.me/index-ptbr.html</loc>
-    <lastmod>2024-12-18</lastmod>
+    <loc>https://valdecir.com/index-ptbr.html</loc>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link 
       rel="alternate"
       hreflang="pt"
-      href="https://valdecir.me/index-ptbr.html" />
+      href="https://valdecir.com/index-ptbr.html" />
     <xhtml:link 
       rel="alternate"
       hreflang="en"
-      href="https://valdecir.me/index.html" />
+      href="https://valdecir.com/index.html" />
     <xhtml:link 
       rel="alternate"
       hreflang="x-default"
-      href="https://valdecir.me/index.html" />
+      href="https://valdecir.com/index.html" />
   </url>
   
   <!-- 404 English -->
   <url>
-    <loc>https://valdecir.me/404.html</loc>
-    <lastmod>2024-12-18</lastmod>
+    <loc>https://valdecir.com/404.html</loc>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.1</priority>
     <xhtml:link 
       rel="alternate"
       hreflang="pt"
-      href="https://valdecir.me/404-ptbr.html" />
+      href="https://valdecir.com/404-ptbr.html" />
     <xhtml:link 
       rel="alternate"
       hreflang="en"
-      href="https://valdecir.me/404.html" />
+      href="https://valdecir.com/404.html" />
     <xhtml:link 
       rel="alternate"
       hreflang="x-default"
-      href="https://valdecir.me/404.html" />
+      href="https://valdecir.com/404.html" />
   </url>
   
   <!-- 404 Portuguese -->
   <url>
-    <loc>https://valdecir.me/404-ptbr.html</loc>
-    <lastmod>2024-12-18</lastmod>
+    <loc>https://valdecir.com/404-ptbr.html</loc>
+    <lastmod>2026-08-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.1</priority>
     <xhtml:link 
       rel="alternate"
       hreflang="pt"
-      href="https://valdecir.me/404-ptbr.html" />
+      href="https://valdecir.com/404-ptbr.html" />
     <xhtml:link 
       rel="alternate"
       hreflang="en"
-      href="https://valdecir.me/404.html" />
+      href="https://valdecir.com/404.html" />
     <xhtml:link 
       rel="alternate"
       hreflang="x-default"
-      href="https://valdecir.me/404.html" />
+      href="https://valdecir.com/404.html" />
   </url>
   
 </urlset> 

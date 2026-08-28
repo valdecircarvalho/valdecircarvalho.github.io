@@ -1,8 +1,8 @@
-# 🚀 Plano de Melhorias SEO - valdecir.me
+# 🚀 Plano de Melhorias SEO - valdecir.com
 
 **Data de criação:** 18/12/2024  
 **Autor:** Análise automatizada de SEO  
-**Site:** https://valdecir.me
+**Site:** https://valdecir.com
 
 ---
 
@@ -30,7 +30,7 @@
 
 #### 1.1 **Ferramentas de Monitoramento**
 - [ ] **Google Search Console**
-  - Adicionar propriedade `https://valdecir.me`
+  - Adicionar propriedade `https://valdecir.com`
   - Submeter sitemap.xml
   - Verificar indexação das páginas
   - Configurar alertas de problemas
@@ -143,12 +143,12 @@
     "@type": "ListItem",
     "position": 1,
     "name": "Home",
-    "item": "https://valdecir.me"
+    "item": "https://valdecir.com"
   }, {
     "@type": "ListItem",
     "position": 2,
     "name": "Blog",
-    "item": "https://valdecir.me/blog"
+    "item": "https://valdecir.com/blog"
   }]
 }
 </script>

@@ -12,7 +12,7 @@ Allow: /404-ptbr.html
 Disallow: /*.pdf$
 
 # Specify sitemap location
-Sitemap: https://valdecir.me/sitemap.xml
+Sitemap: https://valdecir.com/sitemap.xml
 
 # Crawl-delay for bots
 Crawl-delay: 1 
