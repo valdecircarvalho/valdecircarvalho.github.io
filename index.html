@@ -180,6 +180,19 @@
   </section>
   <!-- banner -->
   <!-- resume -->
+  <!-- credentials -->
+  <section class="ds-credentials" data-aos="fade-up">
+    <div class="container">
+      <ul class="ds-cred-list">
+          <li><span class="ds-cred-n">105%</span><span class="ds-cred-l">YoY growth of the C2C Google&nbsp;Cloud community in Brazil</span></li>
+          <li><span class="ds-cred-n">6</span><span class="ds-cred-l">regional VMUG Chapters founded in Brazil</span></li>
+          <li><span class="ds-cred-n">50+</span><span class="ds-cred-l">multinational customers supported on Oracle&nbsp;OCVS</span></li>
+          <li><span class="ds-cred-n">25+</span><span class="ds-cred-l">years in the IT industry</span></li>
+      </ul>
+      <p class="ds-awards"><span class="ds-awards-label">Recognition</span>VMware vExpert <span aria-hidden="true">·</span> Veeam Vanguard <span aria-hidden="true">·</span> HashiCorp Ambassador</p>
+    </div>
+  </section>
+  <!-- credentials -->
   <section class="ds-resume-section" data-aos="fade-up">
     <div class="container">
       <div class="row">
@@ -193,9 +206,9 @@
             their completion, anchored in a solid foundation of technical architecture, team leadership, and
             comprehensive project management.</p>
 
-            <p> In the last three years, I've been deep diving into GenAI and all its  possibilities to create new solutions new product and services, and to drive AI adoption across organizations. My focus has been on leveraging GenAI to solve real-world problems, enhance customer experiences, and drive innovation. I've been actively involved in designing and implementing GenAI solutions that not only meet technical requirements but also align with business goals and customer needs. </p>
+            <p> Since 2023, I've been deep diving into GenAI and all its possibilities to create new solutions, new products and services, and to drive AI adoption across organizations. My focus has been on leveraging GenAI to solve real-world problems, enhance customer experiences, and drive innovation. I've been actively involved in designing and implementing GenAI solutions that not only meet technical requirements but also align with business goals and customer needs. </p>
             <p>  
-            Right now I'm particulary interested in the impact of GenAI in the Application Modernization space, and how it can be used to transform legacy applications and infrastructure into more agile, scalable, and efficient systems. Also, how to better integrate GenAI into the existing SDLC to gain more productivity and efficiency.
+            Right now I'm particularly interested in the impact of GenAI in the Application Modernization space, and how it can be used to transform legacy applications and infrastructure into more agile, scalable, and efficient systems. Also, how to better integrate GenAI into the existing SDLC to gain more productivity and efficiency.
             </p>
           <p>My experience has been marked by a commitment to technical and strategic leadership within infrastructure
             engineering, where I've made meaningful contributions at various levels of organizations. I excel in
@@ -219,10 +232,30 @@
   <section class="ds-email-section" data-aos="fade-up">
     <div class="container">
       <h2>Areas of Expertise</h2>
-      <h4>
-        GenAI ·AI Solutions Architecture · Legacy Application Modernization · Cloud Solutions Architecture · Technical Pre-Sales · Customer Relationship Management · Technical Evangelism and Advocacy · Developer Relations · High Availability System Architecture · Infrastructure as Code (IaC) · Cloud
-        Platform Integration · Containerization and Orchestration · DevOps · Virtualization · Infrastructure · Networking
-      </h4>
+
+      <h3 class="ds-expertise-label">What I do now</h3>
+      <ul class="ds-expertise ds-expertise--focus">
+        <li>Generative AI &amp; AI Agents</li>
+        <li>AI Solutions Architecture</li>
+        <li>Legacy Application Modernization</li>
+        <li>AI Adoption &amp; Enablement</li>
+      </ul>
+
+      <h3 class="ds-expertise-label">What it is built on</h3>
+      <ul class="ds-expertise ds-expertise--base">
+        <li>Cloud Solutions Architecture</li>
+        <li>Technical Pre-Sales</li>
+        <li>Technical Evangelism &amp; Advocacy</li>
+        <li>Developer Relations</li>
+        <li>Customer Relationship Management</li>
+        <li>High Availability System Architecture</li>
+        <li>Infrastructure as Code (IaC)</li>
+        <li>Cloud Platform Integration</li>
+        <li>Containerization &amp; Orchestration</li>
+        <li>DevOps</li>
+        <li>Virtualization</li>
+        <li>Infrastructure &amp; Networking</li>
+      </ul>
     </div>
   </section>
 
@@ -232,10 +265,18 @@
       <h2>I'm passionate about</h2>
       <small>(in no particular order)</small>
 
-      <h4>
-        Tech Communities · 3D Printing · Laser Cutting · Blogging · Public Speaking · 80's Movies · Entrepreneurship ·
-        Videogames · Homelabs/Self Hosting · Bibliographies ·
-      </h4>
+      <ul class="ds-passions">
+        <li>Tech Communities</li>
+        <li>3D Printing</li>
+        <li>Laser Cutting</li>
+        <li>Blogging</li>
+        <li>Public Speaking</li>
+        <li>80's Movies</li>
+        <li>Entrepreneurship</li>
+        <li>Videogames</li>
+        <li>Homelabs / Self Hosting</li>
+        <li>Biographies</li>
+      </ul>
     </div>
   </section>
 
@@ -266,7 +307,7 @@
   <!-- footer -->
   <footer class="ds-footer">
     <div class="container">
-      <span class="ds-copyright"><a href="https://valdecir.com" target="_blank">&copy; 1978-2026 - Hello! I'm Val.</a></span>
+      <span class="ds-copyright"><a href="https://valdecir.com" target="_blank">&copy; 1978-<span class="ds-year">2026</span> - Hello! I'm Val.</a></span>
     </div>
   </footer>
   <!-- footer -->
@@ -286,6 +327,12 @@
 
   <script src="assets/js/main.js"></script>
 
+  <script>
+    // Mantem o ano do copyright correto sem precisar editar 4 arquivos por ano.
+    document.querySelectorAll('.ds-year').forEach(function (el) {
+      el.textContent = String(new Date().getFullYear());
+    });
+  </script>
 </body>
 
 </html>

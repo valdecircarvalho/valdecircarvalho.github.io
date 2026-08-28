@@ -191,7 +191,7 @@
   <!-- footer -->
   <footer class="ds-footer">
     <div class="container">
-      <span class="ds-copyright"><a href="https://valdecir.com" target="_blank">&copy; 1978-2025 - Hello! I'm Val.</span>
+      <span class="ds-copyright"><a href="https://valdecir.com" target="_blank">&copy; 1978-<span class="ds-year">2026</span> - Hello! I'm Val.</a></span>
     </div>
   </footer>
   <!-- footer -->
@@ -204,6 +204,12 @@
     crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
+  <script>
+    // Mantem o ano do copyright correto sem precisar editar 4 arquivos por ano.
+    document.querySelectorAll('.ds-year').forEach(function (el) {
+      el.textContent = String(new Date().getFullYear());
+    });
+  </script>
 </body>
 
 </html> 
