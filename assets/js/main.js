@@ -13,12 +13,10 @@ jQuery(document).ready(function($) {
 
    // AOS - Animate on Scroll
    if (typeof AOS !== 'undefined') {
-      // Remove the fallback style so AOS can control opacity/transforms
-      $('head style').each(function() {
-         if ($(this).text().indexOf('[data-aos]') !== -1) {
-            $(this).remove();
-         }
-      });
+      // Remove the fallback style so AOS can control opacity/transforms.
+      // Por id: varrer o texto dos <style> quebrava se outro bloco inline
+      // mencionasse [data-aos].
+      $('#aos-fallback').remove();
       AOS.init({
          duration: 800,
          easing: 'ease-in-out',
