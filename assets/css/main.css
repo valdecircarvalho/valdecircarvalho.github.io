@@ -27,7 +27,7 @@ Theme Name: Borstein
 	--margin-100:6.25rem;
 	--margin-120:7.5rem;   
 }
-html {font-family: 'Poppins', sans-serif;background-color:#2A2A2A}
+html {font-family: 'Poppins', sans-serif;background-color:#2A2A2A;scroll-behavior: smooth;}
 body {font-family: 'Poppins', sans-serif;overflow-x: hidden; background-color:#2A2A2A; font-weight:400;font-style: normal; color: #FFF; font-size: var(--font_14)}
 a,a:hover,a:focus,i,input,button,input:focus,.transition {text-decoration: none;outline: none;transition-delay: 0s;transition-duration: 0.4s;transition-property: all;transition-timing-function: ease;box-shadow: none;}
 a{color: #008080}
@@ -95,7 +95,8 @@ VC Paleta de Cores
 .ds-social li{ margin-right: 15px }
 .ds-social li:alst-child{ margin-right: 0 }
 .ds-social a{ width: 30px; height: 30px; background-color: #008080; border-radius: 100%; text-align: center; display: flex; justify-content: center; align-items: center; font-size:1.25rem; color:#2A2A2A }
-.ds-social li:hover a{background-color: #008080; color:#000 }
+.ds-social li:hover a{background-color: #008080; color:#000; transform: translateY(-3px); }
+.ds-social a:hover{box-shadow: 0 4px 8px rgba(0,128,128,0.4);}
 
 .ds-banner figure{width: 370px; position: relative;}
 .ds-banner figure figcaption{ color: #FFF; font-size:1.875rem; position: absolute; bottom: 0; width: 100%; text-align: center; padding-bottom:2.5rem  }
@@ -156,7 +157,8 @@ VC Paleta de Cores
 .ds-social-2{ list-style: none; display: flex; align-items: center;margin-top: 2.5rem;justify-content: center;text-decoration: none;}
 .ds-social-2 li{ margin-right: 15px }
 .ds-social-2 a{ width: 30px; height: 30px; text-decoration: none; background-color: #2A2A2A; border-radius:50%; text-align: center; display: flex; justify-content: center; align-items: center; font-size:1.25rem; color:#FFFFFF }
-.ds-social-2 li:hover a{background-color: #FFFFFF; color:#FFFFFF }
+.ds-social-2 li:hover a{background-color: #FFFFFF; color:#2A2A2A; transform: translateY(-3px); }
+.ds-social-2 a:hover{box-shadow: 0 4px 8px rgba(255,255,255,0.3);}
 .ds-social-2 li:last-child{ margin-right: 0 }
 
 
@@ -307,5 +309,67 @@ body {
   -moz-user-select: text !important;
   -ms-user-select: text !important;
   user-select: text !important;
+}
+
+/*-----------------------------------------------------------------
+  >>> Skip to Content (Accessibility)
+----------------------------------------------------------------*/
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #008080;
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  z-index: 9999;
+  border-radius: 0 0 5px 5px;
+  transition: top 0.3s;
+}
+.skip-to-content:focus {
+  top: 0;
+  color: #000;
+}
+
+/*-----------------------------------------------------------------
+  >>> Focus Styles (Accessibility)
+----------------------------------------------------------------*/
+a:focus-visible, button:focus-visible, .ds-download-button:focus-visible {
+  outline: 2px solid #008080;
+  outline-offset: 3px;
+}
+
+/*-----------------------------------------------------------------
+  >>> Back to Top Button
+----------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #008080;
+  color: #000;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0,128,128,0.3);
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0,128,128,0.5);
 }
 
