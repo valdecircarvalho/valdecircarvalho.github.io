@@ -10,7 +10,7 @@
 # 🚀 Sugestões de Atualizações do Site - valdecir.com
 
 **Data:** 18/12/2024  
-**Baseado em:** [Currículo atualizado 2025](https://valdecir.com/assets/files/resume-valdecircarvalho-it-2025.pdf)  
+**Baseado em:** Currículo de 2025 (arquivo não publicado)
 **Foco:** Refletir nova posição como Head of GenAI & Innovation @ TQI
 
 ---
@@ -259,4 +259,4 @@
 
 ---
 
-*Análise baseada no currículo atualizado de 2025 disponível em https://valdecir.com/assets/files/resume-valdecircarvalho-it-2025.pdf* 
+*Análise baseada em uma versão do currículo de 2025, que não está publicada no site.*

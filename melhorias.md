@@ -1,6 +1,6 @@
 > **⚠️ DOCUMENTO HISTÓRICO — parcialmente superado.**
-> Escrito em dez/2024. O domínio migrou de `valdecir.me` para `valdecir.com`
-> em ago/2026 e as URLs abaixo já refletem isso. Os itens marcados como
+> Escrito em dez/2024. O domínio vigente é `valdecir.com`; as URLs abaixo
+> foram atualizadas para esse endereço. Os itens marcados como
 > concluídos foram conferidos: o de *"H1 com nome completo"* havia
 > regredido e foi restaurado. Cargo atual: Head de AI & Innovation na Vertigo.
 
