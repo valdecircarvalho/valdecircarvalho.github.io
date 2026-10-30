@@ -412,3 +412,14 @@ a:focus-visible, button:focus-visible, .ds-download-button:focus-visible {
 @media (max-width: 767px){
   .ds-passions li{ font-size:.9375rem; padding:.375rem .75rem }
 }
+
+/* Profile answers and visible contact actions */
+.ds-contact-actions { font-size: 1rem; line-height: 1.8; overflow-wrap: anywhere; }
+.ds-contact-actions a { text-decoration: underline; }
+.ds-profile-questions { padding: 3.5rem 0; }
+.ds-profile-questions h2 { margin-bottom: 2rem; }
+.ds-profile-questions h3 { font-size: 1.35rem; margin-top: 1.5rem; }
+.ds-contact-actions a { color: #fff; }
+.ds-email-section .ds-contact-actions,
+.ds-email-section .ds-contact-actions a { color: #000; }
+.ds-contact-actions a:hover { text-decoration-thickness: 2px; }

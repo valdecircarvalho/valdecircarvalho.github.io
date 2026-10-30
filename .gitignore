@@ -1,2 +1,3 @@
 docker-compose.yaml
 deploy.bat
+__pycache__/
